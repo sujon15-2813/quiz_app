@@ -31,6 +31,13 @@ class _HomePageState extends State<HomePage> {
   //color code
   Color mainColor = Color(0xFF252c4a);
   Color secondColor = Color(0xFF117eeb);
+  // page controller
+  PageController? _controller = PageController(initialPage: 0);
+  //setting the game variable
+  bool isPressed = false;
+  Color isTrue = Colors.green;
+  Color isWrong = Colors.red;
+  Color btnColor = Color(0xFF117eeb);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                         shape: StadiumBorder(),
                         // padding: EdgeInsets.symmetric(
                         //     horizontal: 60.00, vertical: 18.00),
-                        color: secondColor,
+                        color: btnColor,
                         padding: EdgeInsets.symmetric(vertical: 18.00),
                         onPressed: () {},
                         child: Text(
@@ -88,6 +95,25 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      OutlinedButton(
+                          onPressed: () {},
+                          style: ButtonStyle(
+                              //i will style the button later
+                              ),
+                          child: Text(
+                            'Next Question',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          )),
+                    ],
+                  )
                 ],
               );
             }),
