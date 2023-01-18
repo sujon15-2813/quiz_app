@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:quiz_app/data/questions_list.dart';
 
@@ -42,11 +44,50 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  SizedBox(
+                    width: double.infinity,
+                    child: Text(
+                      'Question ${index + 1} /${questions.length}',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w300,
+                          fontSize: 28.0),
+                    ),
+                  ),
+                  Divider(
+                    height: 8.0,
+                    thickness: 1.0,
+                    color: Colors.white,
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
                   Text(
-                    'Question ${index + 1} /{questions.length}',
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w300),
-                  )
+                    questions[index].question!,
+                    style: TextStyle(color: Colors.white, fontSize: 28.0),
+                  ),
+                  SizedBox(
+                    height: 35.0,
+                  ),
+                  for (int i = 0; i < questions[index].answer!.length; i++)
+                    Container(
+                      width: double.infinity,
+                      margin: EdgeInsets.only(bottom: 18.0),
+                      child: MaterialButton(
+                        shape: StadiumBorder(),
+                        // padding: EdgeInsets.symmetric(
+                        //     horizontal: 60.00, vertical: 18.00),
+                        color: secondColor,
+                        padding: EdgeInsets.symmetric(vertical: 18.00),
+                        onPressed: () {},
+                        child: Text(
+                          questions[index].answer!.keys.toList()[i],
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
                 ],
               );
             }),
