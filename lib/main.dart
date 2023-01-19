@@ -38,6 +38,7 @@ class _HomePageState extends State<HomePage> {
   Color isTrue = Colors.green;
   Color isWrong = Colors.red;
   Color btnColor = Color(0xFF117eeb);
+  int score = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,9 +85,27 @@ class _HomePageState extends State<HomePage> {
                         shape: StadiumBorder(),
                         // padding: EdgeInsets.symmetric(
                         //     horizontal: 60.00, vertical: 18.00),
-                        color: btnColor,
+                        color: isPressed
+                            ? questions[index].answer!.entries.toList()[i].value
+                                ? isTrue
+                                : isWrong
+                            : secondColor,
                         padding: EdgeInsets.symmetric(vertical: 18.00),
-                        onPressed: () {},
+                        onPressed: isPressed
+                            ? null
+                            : () {
+                                setState(() {
+                                  //btnColor = isWrong;
+                                  isPressed = true;
+                                });
+                                if (questions[index]
+                                    .answer!
+                                    .entries
+                                    .toList()[i]
+                                    .value) {
+                                  score += 10;
+                                }
+                              },
                         child: Text(
                           questions[index].answer!.keys.toList()[i],
                           style: TextStyle(
